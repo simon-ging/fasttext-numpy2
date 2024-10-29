@@ -1,4 +1,7 @@
-# fastText
+# fasttext-numpy2
+
+fasttext with one line changed to support numpy 2.
+
 [fastText](https://fasttext.cc/) is a library for efficient learning of word representations and sentence classification.
 
 [![CircleCI](https://circleci.com/gh/facebookresearch/fastText/tree/master.svg?style=svg)](https://circleci.com/gh/facebookresearch/fastText/tree/master)

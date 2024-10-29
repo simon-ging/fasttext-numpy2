@@ -1,3 +1,7 @@
+/.idea/
+*.egg-info/
+*_pybind.cpython*.so
+
 .*.swp
 *.o
 *.bin
