@@ -21,7 +21,7 @@ import subprocess
 import platform
 import io
 
-__version__ = "0.9.2"
+__version__ = "0.10.1"
 FASTTEXT_SRC = "src"
 
 # Based on https://github.com/pybind/python_example
@@ -169,24 +169,28 @@ def _get_readme():
 
 
 setup(
-    name="fasttext",
+    name="fasttext-numpy2",
     version=__version__,
     author="Onur Celebi",
     author_email="celebio@fb.com",
-    description="fasttext Python bindings",
+    description="fasttext Python bindings, fixed numpy 2 compatibiliy",
     long_description=_get_readme(),
     ext_modules=ext_modules,
-    url="https://github.com/facebookresearch/fastText",
+    url="https://github.com/simon-ging/fasttext-numpy2",
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Topic :: Software Development",
         "Topic :: Scientific/Engineering",
         "Operating System :: Microsoft :: Windows",

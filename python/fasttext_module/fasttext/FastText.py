@@ -236,7 +236,8 @@ class _FastText:
             else:
                 probs, labels = ([], ())
 
-            return labels, np.array(probs, copy=False)
+            # return labels, np.array(probs, copy=False)
+            return labels, np.asarray(probs)  # FIX for numpy 2
 
     def get_input_matrix(self):
         """
