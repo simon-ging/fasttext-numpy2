@@ -23,26 +23,9 @@ python -m build
 
 ## build for pypi
 
-note that building wheels for pypi on linux needs the 
-[manylinux](https://github.com/pypa/manylinux) project:
+see `pypibuild.md`
 
-```bash
-# clone and cd into
-pandoc --from=markdown --to=rst --output=python/README.rst python/README.md
-# start the docker with a really old linux, mount the repository
-docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
-  --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64
-# inside docker
-set -e
-rm -rf dist/ wheelhouse/
-for i in {6..13}; do
-  echo build for python 3.${i}
-  python3.${i} -m build
-  auditwheel repair dist/fasttext_numpy2-*-cp3${i}-*.whl
-done
-# repaired manylinux wheels are in wheelhouse/
-python -m twine upload --repository pypi wheelhouse/*
-```
+## notes
 
 all credits go to original authors.
 

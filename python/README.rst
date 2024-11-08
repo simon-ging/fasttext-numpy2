@@ -27,26 +27,10 @@ build
 build for pypi
 --------------
 
-note that building wheels for pypi on linux needs the
-`manylinux <https://github.com/pypa/manylinux>`__ project:
+see ``pypibuild.md``
 
-.. code:: bash
-
-   # clone and cd into
-   pandoc --from=markdown --to=rst --output=python/README.rst python/README.md
-   # start the docker with a really old linux, mount the repository
-   docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
-     --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64
-   # inside docker
-   set -e
-   rm -rf dist/ wheelhouse/
-   for i in {6..13}; do
-     echo build for python 3.${i}
-     python3.${i} -m build
-     auditwheel repair dist/fasttext_numpy2-*-cp3${i}-*.whl
-   done
-   # repaired manylinux wheels are in wheelhouse/
-   python -m twine upload --repository pypi wheelhouse/*
+notes
+-----
 
 all credits go to original authors.
 
@@ -61,22 +45,22 @@ In this document we present how to use fastText in python.
 Table of contents
 -----------------
 
-- `Requirements <#requirements>`__
-- `Installation <#installation>`__
-- `Usage overview <#usage-overview>`__
+-  `Requirements <#requirements>`__
+-  `Installation <#installation>`__
+-  `Usage overview <#usage-overview>`__
 
-  - `Word representation model <#word-representation-model>`__
-  - `Text classification model <#text-classification-model>`__
-  - `IMPORTANT: Preprocessing data / encoding
-    conventions <#important-preprocessing-data-encoding-conventions>`__
-  - `More examples <#more-examples>`__
+   -  `Word representation model <#word-representation-model>`__
+   -  `Text classification model <#text-classification-model>`__
+   -  `IMPORTANT: Preprocessing data / encoding
+      conventions <#important-preprocessing-data-encoding-conventions>`__
+   -  `More examples <#more-examples>`__
 
-- `API <#api>`__
+-  `API <#api>`__
 
-  - ```train_unsupervised``
-    parameters <#train_unsupervised-parameters>`__
-  - ```train_supervised`` parameters <#train_supervised-parameters>`__
-  - ```model`` object <#model-object>`__
+   -  ```train_unsupervised``
+      parameters <#train_unsupervised-parameters>`__
+   -  ```train_supervised`` parameters <#train_supervised-parameters>`__
+   -  ```model`` object <#model-object>`__
 
 Requirements
 ============
@@ -267,12 +251,12 @@ ASCII characters (bytes). In particular, it is not aware of UTF-8
 whitespace. We advice the user to convert UTF-8 whitespace / word
 boundaries into one of the following symbols as appropiate.
 
-- space
-- tab
-- vertical tab
-- carriage return
-- formfeed
-- the null character
+-  space
+-  tab
+-  vertical tab
+-  carriage return
+-  formfeed
+-  the null character
 
 The newline character is used to delimit lines of text. In particular,
 the EOS token is appended to a line of text if a newline character is
@@ -451,12 +435,12 @@ in the vocabulary.
 Join the fastText community
 ---------------------------
 
-- `Facebook page <https://www.facebook.com/groups/1174547215919768>`__
-- `Stack
-  overflow <https://stackoverflow.com/questions/tagged/fasttext>`__
-- `Google
-  group <https://groups.google.com/forum/#!forum/fasttext-library>`__
-- `GitHub <https://github.com/facebookresearch/fastText>`__
+-  `Facebook page <https://www.facebook.com/groups/1174547215919768>`__
+-  `Stack
+   overflow <https://stackoverflow.com/questions/tagged/fasttext>`__
+-  `Google
+   group <https://groups.google.com/forum/#!forum/fasttext-library>`__
+-  `GitHub <https://github.com/facebookresearch/fastText>`__
 
 .. |CircleCI| image:: https://circleci.com/gh/facebookresearch/fastText/tree/master.svg?style=svg
    :target: https://circleci.com/gh/facebookresearch/fastText/tree/master
