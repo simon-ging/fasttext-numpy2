@@ -2,6 +2,8 @@
 
 fasttext with one line changed to support numpy 2.
 
+## install
+
 ```bash
 pip install fasttext-numpy2
 ```
@@ -21,17 +23,24 @@ python -m build
 
 ## build for pypi
 
-note that building wheels for pypi on linux needs the manylinux project:
+note that building wheels for pypi on linux needs the 
+[manylinux](https://github.com/pypa/manylinux) project:
 
 ```bash
-# clone and cd into. make it readable by docker
-chmod -R 777 .
-# start the docker with a really old linux
-docker run -it --rm -v "$(pwd)":/workspace -w /workspace quay.io/pypa/manylinux_2_28_x86_64
+# clone and cd into
+# start the docker with a really old linux, mount the repository
+docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
+  --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64
 # inside docker
-python3.10 -m build
-auditwheel repair dist/fasttext_numpy2-0.10.1-cp310-cp310-linux_x86_64.whl
-# repaired manylinux wheel is in wheelhouse/
+set -e
+rm -rf dist/ wheelhouse/
+for i in {6..13}; do
+  echo build for python 3.${i}
+  python3.${i} -m build
+  auditwheel repair dist/fasttext_numpy2-*-cp3${i}-*.whl
+done
+# repaired manylinux wheels are in wheelhouse/
+python -m twine upload --repository pypi wheelhouse/*
 ```
 
 all credits go to original authors.
