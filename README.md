@@ -28,6 +28,7 @@ note that building wheels for pypi on linux needs the
 
 ```bash
 # clone and cd into
+pandoc --from=markdown --to=rst --output=python/README.rst python/README.md
 # start the docker with a really old linux, mount the repository
 docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
   --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64

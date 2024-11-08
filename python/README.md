@@ -1,3 +1,51 @@
+# fasttext-numpy2
+
+fasttext with one line changed to support numpy 2.
+
+## install
+
+```bash
+pip install fasttext-numpy2
+```
+
+or
+
+```bash
+# clone and cd into
+pip install -e .
+```
+
+## build
+
+```bash
+python -m build
+```
+
+## build for pypi
+
+note that building wheels for pypi on linux needs the
+[manylinux](https://github.com/pypa/manylinux) project:
+
+```bash
+# clone and cd into
+pandoc --from=markdown --to=rst --output=python/README.rst python/README.md
+# start the docker with a really old linux, mount the repository
+docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
+  --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64
+# inside docker
+set -e
+rm -rf dist/ wheelhouse/
+for i in {6..13}; do
+  echo build for python 3.${i}
+  python3.${i} -m build
+  auditwheel repair dist/fasttext_numpy2-*-cp3${i}-*.whl
+done
+# repaired manylinux wheels are in wheelhouse/
+python -m twine upload --repository pypi wheelhouse/*
+```
+
+all credits go to original authors.
+
 # fastText [![CircleCI](https://circleci.com/gh/facebookresearch/fastText/tree/master.svg?style=svg)](https://circleci.com/gh/facebookresearch/fastText/tree/master)
 
 [fastText](https://fasttext.cc/) is a library for efficient learning of word representations and sentence classification.
