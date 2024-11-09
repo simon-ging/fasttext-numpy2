@@ -15,13 +15,17 @@ rm -rf dist/ wheelhouse/
 
 pandoc --from=markdown --to=rst --output=python/README.rst python/README.md
 
-# start each of the dockers and mount the repository
+# build and upload source dist
+python -m build
+python -m twine upload --repository pypi dist/fasttext-numpy2-*.tar.gz
+
+# start each of the dockers and mount the repository inside
 docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
   --user "$(id -u):$(id -g)" quay.io/pypa/manylinux_2_28_x86_64
 docker run -it --rm -v "$(pwd)":/workspace -w /workspace \
   --user "$(id -u):$(id -g)" quay.io/pypa/manylinux2014_x86_64
 
-# inside docker
+# inside docker build binary for various python versions
 set -e
 rm -rf dist/
 for i in {6..13}; do
