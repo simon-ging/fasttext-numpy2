@@ -1,6 +1,38 @@
 # fasttext-numpy2
 
-fasttext with one line changed to support numpy 2.
+pypi package [fasttext-numpy2](https://pypi.org/project/fasttext-numpy2/)
+with one line changed to support numpy 2.
+
+## install
+
+pypi package
+
+```bash
+pip install fasttext-numpy2
+```
+
+or
+
+```bash
+# clone and cd into
+pip install -e .
+```
+
+## build
+
+```bash
+python -m build
+```
+
+## build for pypi
+
+see `pypibuild.md`
+
+## notes
+
+all credits go to the original authors.
+
+# fastText
 
 [fastText](https://fasttext.cc/) is a library for efficient learning of word representations and sentence classification.
 

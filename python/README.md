@@ -1,3 +1,34 @@
+# fasttext-numpy2
+
+fasttext with one line changed to support numpy 2.
+
+## install
+
+```bash
+pip install fasttext-numpy2
+```
+
+or
+
+```bash
+# clone and cd into
+pip install -e .
+```
+
+## build
+
+```bash
+python -m build
+```
+
+## build for pypi
+
+see `pypibuild.md`
+
+## notes
+
+all credits go to original authors.
+
 # fastText [![CircleCI](https://circleci.com/gh/facebookresearch/fastText/tree/master.svg?style=svg)](https://circleci.com/gh/facebookresearch/fastText/tree/master)
 
 [fastText](https://fasttext.cc/) is a library for efficient learning of word representations and sentence classification.
